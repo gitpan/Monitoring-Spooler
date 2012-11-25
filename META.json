@@ -1,0 +1,75 @@
+{
+   "abstract" : "DB handling",
+   "author" : [
+      "Dominik Schulz <tex@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Monitoring-Spooler",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.30"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::Pod" : "1.41"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Config::Tree" : "0",
+            "DBI" : "0",
+            "File::ShareDir" : "0",
+            "File::Temp" : "0",
+            "HTTP::Cookies" : "0",
+            "IPC::Open2" : "0",
+            "JSON" : "0",
+            "LWP::UserAgent" : "0",
+            "Log::Tree" : "0",
+            "Log::Tree::RequiredLogger" : "0",
+            "Module::Pluggable::Object" : "0",
+            "Moose" : "0",
+            "MooseX::App::Cmd" : "0",
+            "MooseX::App::Cmd::Command" : "0",
+            "Plack::Builder" : "0",
+            "Plack::Loader" : "0",
+            "Plack::Request" : "0",
+            "Proc::ProcessTable" : "0",
+            "SMS::Send" : "0",
+            "Template" : "0",
+            "Try::Tiny" : "0",
+            "URI::Escape" : "0",
+            "XMLRPC::Lite" : "0",
+            "feature" : "0",
+            "mro" : "0",
+            "namespace::autoclean" : "0",
+            "perl" : "5.010_000",
+            "strict" : "0",
+            "warnings" : "0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/gittex/Monitoring-Spooler/issues"
+      },
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/gittex/Monitoring-Spooler.git",
+         "web" : "https://github.com/gittex/Monitoring-Spooler"
+      }
+   },
+   "version" : "0.01",
+   "x_authority" : "cpan:TEX"
+}
+
