@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Cmd::Command::phone;
 {
-  $Monitoring::Spooler::Cmd::Command::phone::VERSION = '0.01';
+  $Monitoring::Spooler::Cmd::Command::phone::VERSION = '0.02';
 }
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::phone::AUTHORITY = 'cpan:TEX';

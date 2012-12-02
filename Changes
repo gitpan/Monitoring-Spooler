@@ -1,5 +1,8 @@
 Revision history for Monitoring-Spooler
 
+0.02    2012-12-02
+        Change config module
+
 0.01	2012-11-25
         First public version, released on an unsuspecting world.
 

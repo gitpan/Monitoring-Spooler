@@ -13,7 +13,7 @@ meta-spec:
   version: 1.4
 name: Monitoring-Spooler
 requires:
-  Config::Tree: 0
+  Config::Yak: 0
   DBI: 0
   File::ShareDir: 0
   File::Temp: 0
@@ -45,5 +45,5 @@ requires:
 resources:
   bugtracker: https://github.com/gittex/Monitoring-Spooler/issues
   repository: git://github.com/gittex/Monitoring-Spooler.git
-version: 0.01
+version: 0.02
 x_authority: cpan:TEX

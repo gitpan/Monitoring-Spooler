@@ -1,6 +1,6 @@
 package Monitoring::Spooler::DB;
 {
-  $Monitoring::Spooler::DB::VERSION = '0.01';
+  $Monitoring::Spooler::DB::VERSION = '0.02';
 }
 BEGIN {
   $Monitoring::Spooler::DB::AUTHORITY = 'cpan:TEX';
@@ -33,7 +33,7 @@ has 'dbh' => (
 
 has 'config' => (
     'is'        => 'rw',
-    'isa'       => 'Config::Tree',
+    'isa'       => 'Config::Yak',
     'required'  => 1,
 );
 

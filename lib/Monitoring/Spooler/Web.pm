@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Web;
 {
-  $Monitoring::Spooler::Web::VERSION = '0.01';
+  $Monitoring::Spooler::Web::VERSION = '0.02';
 }
 BEGIN {
   $Monitoring::Spooler::Web::AUTHORITY = 'cpan:TEX';
@@ -22,7 +22,7 @@ use namespace::autoclean;
 # use Try::Tiny;
 use Plack::Request;
 
-use Config::Tree;
+use Config::Yak;
 use Log::Tree;
 use Monitoring::Spooler::DB;
 
@@ -37,7 +37,7 @@ has 'dbh' => (
 
 has 'config' => (
     'is'      => 'ro',
-    'isa'     => 'Config::Tree',
+    'isa'     => 'Config::Yak',
     'lazy'    => 1,
     'builder' => '_init_config',
 );
@@ -75,7 +75,7 @@ sub _init_fields {
 sub _init_config {
     my $self = shift;
 
-    my $Config = Config::Tree::->new({
+    my $Config = Config::Yak::->new({
         'locations'     => [qw(conf /etc/mon-spooler)],
     });
 
@@ -173,7 +173,7 @@ Monitoring::Spooler::DB.
 =head2 config
 
 The config object. Must be an instance of
-Config::Tree.
+Config::Yak.
 
 =head2 logger
 

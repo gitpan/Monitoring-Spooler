@@ -26,7 +26,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Monitoring::Spooler",
   "PREREQ_PM" => {
-    "Config::Tree" => 0,
+    "Config::Yak" => 0,
     "DBI" => 0,
     "File::ShareDir" => 0,
     "File::Temp" => 0,
@@ -55,7 +55,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.01",
+  "VERSION" => "0.02",
   "test" => {
     "TESTS" => "t/*.t"
   }

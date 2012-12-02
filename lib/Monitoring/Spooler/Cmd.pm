@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Cmd;
 {
-  $Monitoring::Spooler::Cmd::VERSION = '0.01';
+  $Monitoring::Spooler::Cmd::VERSION = '0.02';
 }
 BEGIN {
   $Monitoring::Spooler::Cmd::AUTHORITY = 'cpan:TEX';
