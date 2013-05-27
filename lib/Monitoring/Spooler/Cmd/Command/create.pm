@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Cmd::Command::create;
 {
-  $Monitoring::Spooler::Cmd::Command::create::VERSION = '0.02';
+  $Monitoring::Spooler::Cmd::Command::create::VERSION = '0.03';
 }
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::create::AUTHORITY = 'cpan:TEX';
@@ -61,6 +61,8 @@ sub execute {
 
     my $trigger_id = 0;
     my $event = '';
+
+    return 0 unless $self->type() =~ m/^(?:text|phone)$/i;
 
     # Handle negating triggers
     if($self->type() eq 'text'

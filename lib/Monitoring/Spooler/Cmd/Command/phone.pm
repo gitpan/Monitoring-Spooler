@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Cmd::Command::phone;
 {
-  $Monitoring::Spooler::Cmd::Command::phone::VERSION = '0.02';
+  $Monitoring::Spooler::Cmd::Command::phone::VERSION = '0.03';
 }
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::phone::AUTHORITY = 'cpan:TEX';
@@ -84,7 +84,7 @@ sub _prepare_message_and_send {
             next unless defined($result);
 
             # the callee pressed 3, so calls to this group will be paused for 30 minutes
-            if($result == 3) {
+            if($result == 3) { # TODO should be configurable in config ...
                 my $sql = 'INSERT INTO paused_groups (group_id,until) VALUES(?,?)';
                 my $sth = $self->dbh()->prepare($sql);
                 my $until = time() + (30*60); # TODO LOW should confiurable in db w/ default in config and fallback in code

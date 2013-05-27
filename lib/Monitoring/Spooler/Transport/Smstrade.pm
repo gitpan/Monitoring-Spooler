@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Transport::Smstrade;
 {
-  $Monitoring::Spooler::Transport::Smstrade::VERSION = '0.02';
+  $Monitoring::Spooler::Transport::Smstrade::VERSION = '0.03';
 }
 BEGIN {
   $Monitoring::Spooler::Transport::Smstrade::AUTHORITY = 'cpan:TEX';

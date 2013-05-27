@@ -1,6 +1,6 @@
 package Monitoring::Spooler::DB;
 {
-  $Monitoring::Spooler::DB::VERSION = '0.02';
+  $Monitoring::Spooler::DB::VERSION = '0.03';
 }
 BEGIN {
   $Monitoring::Spooler::DB::AUTHORITY = 'cpan:TEX';
