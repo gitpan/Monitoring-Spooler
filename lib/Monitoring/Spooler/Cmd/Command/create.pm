@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Cmd::Command::create;
 {
-  $Monitoring::Spooler::Cmd::Command::create::VERSION = '0.03';
+  $Monitoring::Spooler::Cmd::Command::create::VERSION = '0.04';
 }
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::create::AUTHORITY = 'cpan:TEX';
@@ -147,6 +147,11 @@ MooseX::App::Cmd.
 =head1 NAME
 
 Monitoring::Spooler::Cmd::Command::Create - Command to create new messages
+
+=head1 SETUP
+
+In order for negating triggers to work you need to use a certain message
+template: {TRIGGER.ID} {TRIGGER.STATUS} {TRIGGER.NAME}
 
 =head1 AUTHOR
 

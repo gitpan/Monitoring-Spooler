@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Transport::Pjsua;
 {
-  $Monitoring::Spooler::Transport::Pjsua::VERSION = '0.03';
+  $Monitoring::Spooler::Transport::Pjsua::VERSION = '0.04';
 }
 BEGIN {
   $Monitoring::Spooler::Transport::Pjsua::AUTHORITY = 'cpan:TEX';

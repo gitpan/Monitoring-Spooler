@@ -49,17 +49,20 @@
                <td>Type</td>
                <td>From</td>
                <td>To</td>
+               <td>Del</td>
             </tr>
          </thead>
          <tbody>
          [% FOREACH iv IN notify_intervals %]
             <tr>
                <td>[% iv.type %]</td>
-               <td>[% iv.from %]</td>
-               <td>[% iv.to %]</td>
+               <td>[% iv.notify_from %]</td>
+               <td>[% iv.notify_to %]</td>
+               <td><a class="btn btn-danger" href="?rm=delete_ni&id=[% iv.id %]&group_id=[% group_id %]">Del</a></td>
          [% END %]
          </tbody>
          </table>
+         <a href="?rm=add_ni&group_id=[% group_id %]">Add Notification Window</a>
       </div>
    </div><!-- /rows -->
 </div>

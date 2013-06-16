@@ -30,6 +30,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Monitoring::Spooler",
   "PREREQ_PM" => {
     "Config::Yak" => 0,
+    "DBD::SQLite" => 0,
     "DBI" => 0,
     "File::ShareDir" => 0,
     "File::Temp" => 0,
@@ -59,7 +60,7 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.03",
+  "VERSION" => "0.04",
   "test" => {
     "TESTS" => "t/*.t"
   }

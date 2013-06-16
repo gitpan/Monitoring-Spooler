@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Transport::SmsSend;
 {
-  $Monitoring::Spooler::Transport::SmsSend::VERSION = '0.03';
+  $Monitoring::Spooler::Transport::SmsSend::VERSION = '0.04';
 }
 BEGIN {
   $Monitoring::Spooler::Transport::SmsSend::AUTHORITY = 'cpan:TEX';

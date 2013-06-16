@@ -1,6 +1,6 @@
 package Monitoring::Spooler::Web::Frontend;
 {
-  $Monitoring::Spooler::Web::Frontend::VERSION = '0.03';
+  $Monitoring::Spooler::Web::Frontend::VERSION = '0.04';
 }
 BEGIN {
   $Monitoring::Spooler::Web::Frontend::AUTHORITY = 'cpan:TEX';
@@ -77,7 +77,7 @@ sub _init_tt {
 }
 
 sub _init_fields {
-    return [qw(rm group_id msg_id message type)];
+    return [qw(rm group_id msg_id message type from to id)];
 }
 
 # your code here ...
@@ -99,8 +99,14 @@ sub _handle_request {
         return $self->_handle_flush_messages($request);
     } elsif($mode eq 'rm_message') {
         return $self->_handle_rm_message($request);
+    } elsif($mode eq 'add_ni') {
+        return $self->_handle_add_ni($request);
+    } elsif($mode eq 'create_ni') {
+        return $self->_handle_create_ni($request);
+    } elsif($mode eq 'delete_ni') {
+        return $self->_handle_delete_ni($request);
     } else {
-        return;
+        return [ 500, [ 'Content-Type', 'text/plain'], ['Internal Server Error']];
     }
 }
 
@@ -249,6 +255,7 @@ sub _handle_show_group {
             'notify_order'     => \@notify_order,
             'notify_intervals' => \@notify_intervals,
             'groups'           => $self->_get_groups(),
+            'group_id'         => $group_id,
         },
         \$body,
     ) or $self->logger()->log( message => 'TT error: '.$self->tt()->error, level => 'warning', );
@@ -325,6 +332,66 @@ sub _handle_rm_message {
     return [ 301, [ 'Location', '?rm=overview' ], [] ];
 }
 
+sub _handle_add_ni {
+  my $self = shift;
+  my $request = shift;
+
+  my $group_id   = $request->{'group_id'};
+
+    my $body;
+    $self->tt()->process(
+        'add_ni.tpl',
+        {
+            'groups'          => $self->_get_groups(),
+            'group_id'        => $group_id,
+        },
+        \$body,
+    ) or $self->logger()->log( message => 'TT error: '.$self->tt()->error, level => 'warning', );
+
+    return [ 200, [ 'Content-Type', 'text/html' ], [$body]];
+}
+
+sub _handle_create_ni {
+  my $self = shift;
+  my $request = shift;
+
+  my $group_id = $request->{'group_id'};
+  my $type     = $request->{'type'};
+  my $from     = $request->{'from'};
+  my $to       = $request->{'to'};
+
+  $self->logger()->log( message => "Args: $group_id, $type, $from, $to", level => 'debug', );
+
+  if($group_id && $type && $from && $to) {
+    my $sql = 'INSERT INTO notify_interval (type,notify_from,notify_to,group_id) VALUES(?,?,?,?)';
+    my $sth = $self->dbh()->prepexec($sql,$type,$from,$to,$group_id);
+    if(!$sth) {
+      $self->logger()->log( message => 'Query '.$sql.' failed: '.$self->dbh()->errstr(), level => 'error', );
+    }
+    $sth->finish() if $sth;
+  }
+
+  return [ 301, [ 'Location', '?rm=show_group&group_id='.$group_id ], [] ];
+}
+
+sub _handle_delete_ni {
+  my $self = shift;
+  my $request = shift;
+
+  my $id = $request->{'id'};
+  my $group_id = $request->{'group_id'};
+
+  if($id) {
+    my $sql = 'DELETE FROM notify_interval WHERE id = ?';
+    my $sth = $self->dbh()->prepexec($sql,$id);
+    if(!$sth) {
+      $self->logger()->log( message => 'Query '.$sql.' failed: '.$self->dbh()->errstr(), level => 'error', );
+    }
+    $sth->finish() if $sth;
+  }
+
+  return [ 301, [ 'Location', '?rm=show_group&group_id='.$group_id ], [] ];
+}
 sub _handle_flush_messages {
     my $self = shift;
     my $request = shift;

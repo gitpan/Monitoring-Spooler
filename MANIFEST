@@ -20,6 +20,7 @@ lib/Monitoring/Spooler/Cmd.pm
 lib/Monitoring/Spooler/Cmd/Command.pm
 lib/Monitoring/Spooler/Cmd/Command/bootstrap.pm
 lib/Monitoring/Spooler/Cmd/Command/create.pm
+lib/Monitoring/Spooler/Cmd/Command/email.pm
 lib/Monitoring/Spooler/Cmd/Command/flush.pm
 lib/Monitoring/Spooler/Cmd/Command/list.pm
 lib/Monitoring/Spooler/Cmd/Command/phone.pm
@@ -45,6 +46,7 @@ share/res/img/red_button_wikimedia.png
 share/res/js/bootstrap.js
 share/res/js/bootstrap.min.js
 share/res/js/jquery-2.0.1.min.js
+share/tpl/add_ni.tpl
 share/tpl/group.tpl
 share/tpl/includes/footer.tpl
 share/tpl/includes/header.tpl
