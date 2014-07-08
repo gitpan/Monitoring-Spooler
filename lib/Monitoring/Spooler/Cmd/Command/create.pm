@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Cmd::Command::create;
-{
-  $Monitoring::Spooler::Cmd::Command::create::VERSION = '0.04';
-}
+$Monitoring::Spooler::Cmd::Command::create::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::create::AUTHORITY = 'cpan:TEX';
 }
@@ -67,7 +65,7 @@ sub execute {
     # Handle negating triggers
     if($self->type() eq 'text'
        && $self->config()->get('Monitoring::Spooler::NegatingTrigger')
-       && $message =~ m/^\s*(\d+)\s+(OK|UP|DOWN)\s/) {
+       && $message =~ m/^\s*(\d+)\s+(OK|UP|DOWN|PROBLEM)\s/) {
         $trigger_id = $1;
         $event = $2;
         # remove the leading trigger id

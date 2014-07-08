@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Cmd::Command::flush;
-{
-  $Monitoring::Spooler::Cmd::Command::flush::VERSION = '0.04';
-}
+$Monitoring::Spooler::Cmd::Command::flush::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::flush::AUTHORITY = 'cpan:TEX';
 }

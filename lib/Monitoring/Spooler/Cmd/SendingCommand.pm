@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Cmd::SendingCommand;
-{
-  $Monitoring::Spooler::Cmd::SendingCommand::VERSION = '0.04';
-}
+$Monitoring::Spooler::Cmd::SendingCommand::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Cmd::SendingCommand::AUTHORITY = 'cpan:TEX';
 }
@@ -148,6 +146,7 @@ sub _init_transports {
         $arg_ref->{'dbh'}    = $self->dbh();
         if($arg_ref->{'disabled'}) {
             $self->logger()->log( message => 'Skipping disabled transport: '.$plugin_name, level => 'debug', );
+            next;
         }
         try {
             my $Transport = $plugin_name->new($arg_ref);

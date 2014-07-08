@@ -28,10 +28,24 @@ SETUP
 
     This will create an initial group and set things up.
 
+    WARNING: Make sure the database file is owned by the user service the
+    webinterface and also accessible by the user execution your cronjobs,
+    e.g. www-data.
+
+        chown -R www-data:www-data /var/lib/mon-spooler/
+
   CREATE CRONJOBS
     Create at least one cronjob here. If you have set-up an provider which
     supports both text and phone messages you should set up two cronjobs
     here, otherwise create only one for either phone or test messages.
+
+  CREATE NOTIFICATION QUEUE
+    At the moment there is no easy built-in interface to populate the
+    notification queue with a set of contacts. The recommended way is to use
+    App::Standby for that. If you opt not to, then I'd recommend using bare
+    SQL:
+
+      sqlite3 /var/lib/mon-spooler/db.sqlite3
 
   SETUP MONITORING
     Set up your monitoring to send notifications the this external command:
@@ -83,6 +97,14 @@ SETUP
     message as well as recovery messages. The "operation" should send a
     message to new appropriate "queue user".
 
+   NAGIOS SETUP
+    To setup nagios, or any nagios compatible product like icinga, shinken
+    or naemon, is pretty straight forward. Just call "mon-spooler.pl create
+    -g<Group-Id> -t<text|phone> -m<MSG>" like you'd call any other external
+    notification script.
+
+    More examples on nagios will follow shortly.
+
   SETUP WEBINTERFACE
     In this optional step you can set up the included webinterface and http
     API.
@@ -109,6 +131,10 @@ CONFIGURATION
 SEE ALSO
     This distribution is much like the commerical PagerDuty service. Only
     that it's free, self-hosted and fully customizable.
+
+DEBUGGING
+    If anything goes wrong have a look at the logfile at
+    /var/log/mon-spooler-web.log or /tmp/mon-spooler-weg.log.
 
 AUTHOR
     Dominik Schulz <tex@cpan.org>

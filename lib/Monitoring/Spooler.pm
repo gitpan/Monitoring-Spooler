@@ -1,7 +1,5 @@
 package Monitoring::Spooler;
-{
-  $Monitoring::Spooler::VERSION = '0.04';
-}
+$Monitoring::Spooler::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::AUTHORITY = 'cpan:TEX';
 }
@@ -49,11 +47,24 @@ Run the bootstrap command:
 
 This will create an initial group and set things up.
 
+WARNING: Make sure the database file is owned by the user service the webinterface
+and also accessible by the user execution your cronjobs, e.g. www-data.
+
+    chown -R www-data:www-data /var/lib/mon-spooler/
+
 =head2 CREATE CRONJOBS
 
 Create at least one cronjob here. If you have set-up an provider which supports
 both text and phone messages you should set up two cronjobs here, otherwise
 create only one for either phone or test messages.
+
+=head2 CREATE NOTIFICATION QUEUE
+
+At the moment there is no easy built-in interface to populate the notification
+queue with a set of contacts. The recommended way is to use App::Standby for
+that. If you opt not to, then I'd recommend using bare SQL:
+
+  sqlite3 /var/lib/mon-spooler/db.sqlite3
 
 =head2 SETUP MONITORING
 
@@ -101,6 +112,14 @@ Afterwards you'll need to create a new action with an appropriate name, an event
 no escalations, a subject and concise message as well as recovery messages. The "operation" should
 send a message to new appropriate "queue user".
 
+=head3 NAGIOS SETUP
+
+To setup nagios, or any nagios compatible product like icinga, shinken or naemon, is pretty
+straight forward. Just call "mon-spooler.pl create -g<Group-Id> -t<text|phone> -m<MSG>"
+like you'd call any other external notification script.
+
+More examples on nagios will follow shortly.
+
 =head2 SETUP WEBINTERFACE
 
 In this optional step you can set up the included webinterface and http API.
@@ -115,7 +134,7 @@ e.g. Starman.
 <Monitoring>
     <Spooler>
         NegatingTrigger = 1
-        DBFile = /var/lib/mon-spooler/db.sqlite3
+        DBFile          = /var/lib/mon-spooler/db.sqlite3
         <Frontend>
             TemplatePath = /var/lib/mon-spooler/tpl
             StaticPath   = /var/lib/mon-spooler/res
@@ -158,6 +177,11 @@ e.g. Starman.
 
 This distribution is much like the commerical PagerDuty service. Only that it's free,
 self-hosted and fully customizable.
+
+=head1 DEBUGGING
+
+If anything goes wrong have a look at the logfile at /var/log/mon-spooler-web.log or
+/tmp/mon-spooler-weg.log.
 
 =head1 AUTHOR
 

@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Cmd::Command::email;
-{
-  $Monitoring::Spooler::Cmd::Command::email::VERSION = '0.04';
-}
+$Monitoring::Spooler::Cmd::Command::email::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::email::AUTHORITY = 'cpan:TEX';
 }

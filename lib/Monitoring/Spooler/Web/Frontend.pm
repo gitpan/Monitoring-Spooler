@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Web::Frontend;
-{
-  $Monitoring::Spooler::Web::Frontend::VERSION = '0.04';
-}
+$Monitoring::Spooler::Web::Frontend::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Web::Frontend::AUTHORITY = 'cpan:TEX';
 }

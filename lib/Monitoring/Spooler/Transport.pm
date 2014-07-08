@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Transport;
-{
-  $Monitoring::Spooler::Transport::VERSION = '0.04';
-}
+$Monitoring::Spooler::Transport::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Transport::AUTHORITY = 'cpan:TEX';
 }

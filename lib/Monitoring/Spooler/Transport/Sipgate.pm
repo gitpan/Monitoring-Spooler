@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Transport::Sipgate;
-{
-  $Monitoring::Spooler::Transport::Sipgate::VERSION = '0.04';
-}
+$Monitoring::Spooler::Transport::Sipgate::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Transport::Sipgate::AUTHORITY = 'cpan:TEX';
 }

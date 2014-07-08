@@ -1,7 +1,5 @@
 package Monitoring::Spooler::Cmd::Command::bootstrap;
-{
-  $Monitoring::Spooler::Cmd::Command::bootstrap::VERSION = '0.04';
-}
+$Monitoring::Spooler::Cmd::Command::bootstrap::VERSION = '0.05';
 BEGIN {
   $Monitoring::Spooler::Cmd::Command::bootstrap::AUTHORITY = 'cpan:TEX';
 }
